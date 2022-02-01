@@ -1,0 +1,43 @@
+﻿<div class="container p-3 my-3 bg-dark text-white">
+    <table class="table table-hover table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Note Type</th>
+                <th>Description</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservedTickete in reservedTicketes)
+            {
+                <tr>
+                    <td>@reservedTickete.NodeType</td>
+                    <td>@reservedTickete.Description</td>
+                    <td>@reservedTickete.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    public class ReservedTicketes
+    {
+        public string NodeType { get; set; }
+        public string Description { get; set; }
+        public string Email { get; set; }
+    }
+    private ReservedTicketes[] reservedTicketes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reservedTicketes = new ReservedTicketes[]
+        {
+            new ReservedTicketes { NodeType = "Improvment", Description = "It's good", Email = "john@example.com" },
+            new ReservedTicketes { NodeType = "Hint", Description = "It's so good", Email = "mary@example.com" },
+            new ReservedTicketes { NodeType = "Improvment", Description = "It's good", Email = "july@example.com" },
+                };
+    }
+
+}
